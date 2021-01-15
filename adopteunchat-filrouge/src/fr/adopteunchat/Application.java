@@ -1,12 +1,11 @@
 package fr.adopteunchat;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
+import fr.adopteunchat.dao.IPersonneDao;
+import fr.adopteunchat.dao.sql.PersonneDaoSql;
 import fr.adopteunchat.model.Personne;
 
 public class Application {
@@ -34,13 +33,30 @@ public class Application {
 //			e.printStackTrace();
 //		}
 		
-		LocalDate dt = LocalDate.of(1967,1,1);
+	
 		
 		Personne jeannine = new Personne("Dujardin","Jeannine","jeannine.dujardin@gmail.com",
-				"0600000000","12, rue du port 59000 Lille","123456azerty",dt,"Adoptant");
+				"0600000000","12, rue du port 59000 Lille","123456azerty","1967-01-01","Adoptant");
 		
 		
 		System.out.println(jeannine.getNom());
+		
+		
+		
+		IPersonneDao daoPersonne = new PersonneDaoSql();
+		
+		List<Personne> personnes = daoPersonne.findAll();
+		
+		for (Personne personne : personnes) {
+			System.out.println(personne);
+		}
+		
+		
+		System.out.println("###################### BY ID #####################");
+		
+		
+		System.out.println(daoPersonne.findById(3));
+		
 		
 	}
 
