@@ -10,7 +10,7 @@ public abstract class DaoSql {
 	protected void openConnection() {
 		try {
 			this.connexionSql = DriverManager.getConnection("jdbc:mysql://localhost:3306/adopteunchat?serverTimezone=UTC", "root", "");
-			System.out.println("Connexion OK !");
+			//System.out.println("Connexion OK !");
 		}
 		
 		catch (SQLException sqle) {

@@ -6,6 +6,7 @@ import java.util.List;
 
 import fr.adopteunchat.dao.IPersonneDao;
 import fr.adopteunchat.dao.sql.PersonneDaoSql;
+import fr.adopteunchat.front.ConsoleMenu;
 import fr.adopteunchat.front.UserInput;
 import fr.adopteunchat.model.Personne;
 
@@ -90,30 +91,37 @@ public class Application {
 //		}
 		
 		
-		System.out.println("\n###################### Saisie utilisateur #####################");
+//		System.out.println("\n###################### Saisie utilisateur #####################");
+//		
+//		UserInput input1 = new UserInput();
+//		
+//		IPersonneDao daoPersonne = new PersonneDaoSql();
+//		
+//		List<Personne> personnesAvant = daoPersonne.findAll();
+//		
+//		System.out.println("\nLISTE DES PERSONNES AVANT SAISIE\n");
+//		for (Personne personne : personnesAvant) {
+//			System.out.println(personne);
+//		}
+//		
+//		System.out.println("\n");
+//		
+//		input1.input();
+//		
+//		
+//		List<Personne> personnesApres = daoPersonne.findAll();
+//		
+//		System.out.println("\nLISTE DES PERSONNES APRES SAISIE\n");
+//		for (Personne personne : personnesApres) {
+//			System.out.println(personne);
+//		}
 		
-		UserInput input1 = new UserInput();
 		
-		IPersonneDao daoPersonne = new PersonneDaoSql();
+		ConsoleMenu menu = new ConsoleMenu();
 		
-		List<Personne> personnesAvant = daoPersonne.findAll();
+		menu.launchApp();
+				
 		
-		System.out.println("\nLISTE DES PERSONNES AVANT SAISIE\n");
-		for (Personne personne : personnesAvant) {
-			System.out.println(personne);
-		}
-		
-		System.out.println("\n");
-		
-		input1.input();
-		
-		
-		List<Personne> personnesApres = daoPersonne.findAll();
-		
-		System.out.println("\nLISTE DES PERSONNES APRES SAISIE\n");
-		for (Personne personne : personnesApres) {
-			System.out.println(personne);
-		}
 		
 	}
 

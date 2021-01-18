@@ -11,7 +11,7 @@ public class UserInput {
 	
 	public void input() {
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
 		
 		String nom="";
@@ -24,31 +24,31 @@ public class UserInput {
 		String type="";
 		
 		System.out.println("Veuillez saisir le nom:");
-		nom=sc.nextLine();
+		nom=scan.nextLine();
 		
 		System.out.println("Veuillez saisir le prénom:");
-		prenom=sc.nextLine();
+		prenom=scan.nextLine();
 		
 		System.out.println("Veuillez saisir le mail:");
-		mail=sc.nextLine();
+		mail=scan.nextLine();
 		
 		System.out.println("Veuillez saisir le numéro de téléphone:");
-		telephone=sc.nextLine();
+		telephone=scan.nextLine();
 		
 		System.out.println("Veuillez saisir l'adresse:");
-		adresse=sc.nextLine();
+		adresse=scan.nextLine();
 		
 		System.out.println("Veuillez saisir le mot de passe:");
-		motDePasse=sc.nextLine();
+		motDePasse=scan.nextLine();
 		
 		while(dateNaissance.equals("")) {
 			System.out.println("Veuillez saisir la date de naissance (format: yyyy-mm-dd):");
-			dateNaissance=sc.nextLine();
+			dateNaissance=scan.nextLine();
 		}
 
 		while(type.equals("Adoptant")==false && type.equals("Refuge")==false) {
 			System.out.println("Veuillez saisir le type (Adoptant ou Refuge)");
-			type=sc.nextLine();
+			type=scan.nextLine();
 		}
 		
 		Personne maPersonne = new Personne(nom,prenom,mail,telephone,adresse,motDePasse,dateNaissance,type);
@@ -57,7 +57,9 @@ public class UserInput {
 		
 		daoPersonne.add(maPersonne);
 		
-		sc.close();
+		System.out.println("Nouvelle personne enregistrée!");
+		
+		scan.close();
 	}
 	
 }
