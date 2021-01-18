@@ -59,16 +59,21 @@ public class PersonneDaoSql extends DaoSql implements IPersonneDao{
 		
 		Personne maPersonne=new Personne();
 		
+		
 		try {
+			this.openConnection();
+			
 			PreparedStatement monStatement = this.connexionSql.prepareStatement("SELECT * FROM personne WHERE PER_ID=?");
 			
 			//REMPLIR LES ? (Paramètre indexés)
 			monStatement.setInt(1, id);
 			
-			
 			ResultSet monResultat = monStatement.executeQuery();
 			
+			// Récupération du résultat
 			
+			monResultat.next();
+
 			maPersonne.setId(monResultat.getInt("PER_ID"));
 			maPersonne.setNom(monResultat.getString("PER_NOM"));
 			maPersonne.setPrenom(monResultat.getString("PER_PRENOM"));
@@ -78,7 +83,7 @@ public class PersonneDaoSql extends DaoSql implements IPersonneDao{
 			maPersonne.setPassword(monResultat.getString("PER_PASSWORD"));
 			maPersonne.setDateNaissance(monResultat.getString("PER_DATE_NAISSANCE"));
 			maPersonne.setType(monResultat.getString("PER_TYPE"));
-			
+				
 		} 
 		
 		catch (SQLException sqle) {
@@ -96,14 +101,76 @@ public class PersonneDaoSql extends DaoSql implements IPersonneDao{
 
 	@Override
 	public Personne add(Personne entity) {
-		// TODO Auto-generated method stub
-		return null;
+
+
+		try {
+			this.openConnection();
+			
+			//REQUETE D'INSERT
+			PreparedStatement monStatementInsert = this.connexionSql.prepareStatement("INSERT INTO personne (PER_NOM, PER_PRENOM, PER_MAIL, PER_TELEPHONE,PER_ADRESSE,"
+					+ "PER_PASSWORD,PER_DATE_NAISSANCE,PER_TYPE) VALUES (?, ?, ?, ?,?,?,?,?)");
+			
+			//REMPLIR LES ? (Paramètres indexés)
+			monStatementInsert.setString(1, entity.getNom());
+			monStatementInsert.setString(2, entity.getPrenom());
+			monStatementInsert.setString(3, entity.getMail());
+			monStatementInsert.setString(4, entity.getTelephone());
+			monStatementInsert.setString(5, entity.getAdresse());
+			monStatementInsert.setString(6, entity.getPassword());
+			monStatementInsert.setString(7, entity.getDateNaissance());
+			monStatementInsert.setString(8, entity.getType());
+			
+			monStatementInsert.execute();
+		}
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		
+		finally {
+			this.closeConnection();
+		}
+		
+		return entity;
+		
+		
 	}
 
 	@Override
 	public Personne save(Personne entity) {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+			this.openConnection();
+			PreparedStatement monStatementInsert = this.connexionSql.prepareStatement(" UPDATE personne SET PER_NOM=?, PER_PRENOM=?, PER_MAIL=?, PER_TELEPHONE=?,PER_ADRESSE=?,"
+					+ "PER_PASSWORD=?,PER_DATE_NAISSANCE=?,PER_TYPE=? WHERE PER_ID=?");
+			
+			monStatementInsert.setString(1, entity.getNom());
+			monStatementInsert.setString(2, entity.getPrenom());
+			monStatementInsert.setString(3, entity.getMail());
+			monStatementInsert.setString(4, entity.getTelephone());
+			monStatementInsert.setString(5, entity.getAdresse());
+			monStatementInsert.setString(6, entity.getPassword());
+			monStatementInsert.setString(7, entity.getDateNaissance());
+			monStatementInsert.setString(8, entity.getType());
+			monStatementInsert.setInt(9, entity.getId());
+			
+			monStatementInsert.execute();
+			
+			
+		}
+
+		catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		
+		finally {
+			this.closeConnection();
+		}
+		
+		
+		return entity;
+		
+		
 	}
 
 	@Override
@@ -114,7 +181,8 @@ public class PersonneDaoSql extends DaoSql implements IPersonneDao{
 			
 			PreparedStatement monStatementInsert = this.connexionSql.prepareStatement("DELETE FROM personne WHERE PER_ID = ?");
 			
-			//REMPLIR LES ? (Paramètres indexés)
+			/* Remplir les ? */
+			
 			monStatementInsert.setInt(1, id);
 			
 			monStatementInsert.execute();

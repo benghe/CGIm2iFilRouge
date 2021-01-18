@@ -85,7 +85,6 @@ public class Personne {
 	}
 
 	/**
-	 * @param id
 	 * @param nom
 	 * @param prenom
 	 * @param mail
@@ -98,6 +97,31 @@ public class Personne {
 	public Personne(String nom, String prenom, String mail, String telephone, String adresse, String password,
 			String dateNaissance, String type) {
 
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.telephone = telephone;
+		this.adresse = adresse;
+		this.password = password;
+		this.dateNaissance = dateNaissance;
+		this.type = type;
+	}
+
+	/**
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param mail
+	 * @param telephone
+	 * @param adresse
+	 * @param password
+	 * @param dateNaissance
+	 * @param type
+	 */
+	public Personne(int id, String nom, String prenom, String mail, String telephone, String adresse, String password,
+			String dateNaissance, String type) {
+		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;

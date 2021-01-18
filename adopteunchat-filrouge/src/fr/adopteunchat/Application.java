@@ -52,10 +52,42 @@ public class Application {
 		}
 		
 		
-		System.out.println("###################### BY ID #####################");
+		System.out.println("\n###################### BY ID #####################");
+		
+//		IPersonneDao daoPersonne2 = new PersonneDaoSql();
+		System.out.println(daoPersonne.findById(1));
 		
 		
-		System.out.println(daoPersonne.findById(3));
+		
+//		System.out.println("\n###################### ADD #####################");
+//		
+//		daoPersonne.add(jeannine);
+//		System.out.println("Added!");
+//		
+//		System.out.println("");
+//		
+//		List<Personne> personnes1 = daoPersonne.findAll();
+//		
+//		for (Personne personne : personnes1) {
+//			System.out.println(personne);
+//		}
+		
+		
+		System.out.println("\n###################### UPDATE #####################");
+		
+		Personne jeannineUpddate = new Personne(6,"Dujardin","Jeannine","jeannine.dududujardin@gmail.com",
+				"0600000000","12, rue du port 59000 Lillee","123456azertyyyyy","1967-01-01","Adoptant");
+		
+		daoPersonne.save(jeannineUpddate);
+		
+		System.out.println("");
+		
+		List<Personne> personnes2 = daoPersonne.findAll();
+		
+		for (Personne personne : personnes2) {
+			System.out.println(personne);
+		}
+		
 		
 		
 	}
