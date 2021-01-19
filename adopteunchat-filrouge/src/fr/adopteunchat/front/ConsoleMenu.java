@@ -55,30 +55,16 @@ public class ConsoleMenu {
 				System.out.println(personne);
 			}
 
-			afterAction();
+			afterAction(sc);
 			break;
 
 		case 2:
 			
 			UserInput input1 = new UserInput();
-			input1.input();
-			
-			break;
-			
-			//BUG CONSOLE
+			input1.input(sc);
 		
-//			sc.next();
-//			sc.next();
-//			sc.next();
-//			sc.next();
-//			sc.next();
-//			sc.next();
-//			sc.next();
-			
-			
-			
-			//afterAction();
-		//	break;
+			afterAction(sc);
+			break;
 
 		case 3:
 
@@ -205,7 +191,7 @@ public class ConsoleMenu {
 
 			} // FIN Switch pour modifier seulement un élément
 
-			afterAction();
+			afterAction(sc);
 			break; // FIN Case 3
 
 		case 4:
@@ -230,10 +216,10 @@ public class ConsoleMenu {
 
 			case 2:
 				System.out.println("\nOpération annulée!\n");
-				afterAction();
+				afterAction(sc);
 			}
 
-			afterAction();
+			afterAction(sc);
 			break; // FIN Case 4
 
 		default:
@@ -246,9 +232,9 @@ public class ConsoleMenu {
 
 	}
 
-	public void afterAction() {
+	public void afterAction(Scanner sci) {
 		int choix = 0;
-		Scanner sci = new Scanner(System.in);
+		//Scanner sci = new Scanner(System.in);
 		System.out.println("\n1 - Revenir à l'accueil");
 		System.out.println("0 - Quitter l'application");
 

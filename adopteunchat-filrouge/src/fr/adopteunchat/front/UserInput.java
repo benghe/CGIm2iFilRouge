@@ -9,9 +9,9 @@ import fr.adopteunchat.model.Personne;
 public class UserInput {
 
 	
-	public void input() {
+	public void input(Scanner scan) {
 		
-		Scanner scan = new Scanner(System.in);
+		//Scanner scan = new Scanner(System.in);
 		
 		
 		String nom="";
@@ -22,6 +22,8 @@ public class UserInput {
 		String motDePasse="";
 		String dateNaissance="";
 		String type="";
+		
+		scan.nextLine();
 		
 		System.out.println("Veuillez saisir le nom:");
 		nom=scan.nextLine();
@@ -57,9 +59,9 @@ public class UserInput {
 		
 		daoPersonne.add(maPersonne);
 		
-		System.out.println("Nouvelle personne enregistrée!");
+		System.out.println("\nNouvelle personne enregistrée!");
 		
-		scan.close();
+		//scan.close();
 	}
 	
 }
