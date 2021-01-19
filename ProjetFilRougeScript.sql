@@ -92,3 +92,21 @@ ALTER TABLE dpt
     FOREIGN KEY (DPT_REGION)
     REFERENCES region (REGION_ID)
     ON DELETE RESTRICT;
+
+
+INSERT INTO personne (PER_NOM,PER_PRENOM, PER_MAIL, PER_TELEPHONE,PER_ADRESSE,
+PER_PASSWORD,PER_DATE_NAISSANCE, PER_TYPE) 
+values ('Dupont', 'Jean', 'jean.dupont@hotmail.fr', '0610101010', '10 rue de la place, 59000 Lille','123456','1964-01-01','Adoptant');
+
+INSERT INTO personne (PER_NOM,PER_PRENOM, PER_MAIL, PER_TELEPHONE,PER_ADRESSE,
+PER_PASSWORD,PER_DATE_NAISSANCE, PER_TYPE) 
+values ('Dujardin', 'Alice', 'alice.dujardin@hotmail.fr', '0610101011', '14 rue du port, 59000 Lille','123456789','1987-06-13','Adoptant');
+
+INSERT INTO personne (PER_NOM,PER_PRENOM, PER_MAIL, PER_TELEPHONE,PER_ADRESSE,
+PER_PASSWORD, PER_TYPE) 
+values ('SPA', 'Lille', 'spa.lille@hotmail.fr', '0610101000', '1 rue des chiens, 59000 Lille','123456123','Refuge');
+
+INSERT INTO personne (PER_NOM,PER_PRENOM, PER_MAIL, PER_TELEPHONE,PER_ADRESSE,
+PER_PASSWORD, PER_TYPE) 
+values ('SPA', 'Quimper', 'spa-quimper@hotmail.fr', '0610101032', '1 rue du bois, 29000 Quimper','123456123','Refuge');
+
