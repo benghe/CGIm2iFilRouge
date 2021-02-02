@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import fr.adopteunchat.dao.IDao;
+
 import fr.adopteunchat.dao.IPersonneDao;
 import fr.adopteunchat.dao.IChatDao;
 import fr.adopteunchat.dao.sql.PersonneDaoSql;
@@ -18,6 +18,8 @@ public class ConsoleMenu {
 		System.out.println("\n####################################################");
 		System.out.println("#                                                  #");
 		System.out.println("#                 ADOPTE UN CHAT                   #");
+		System.out.println("#                                                  #");
+		System.out.println("#                                                  #");
 		System.out.println("#                                                  #");
 		System.out.println("####################################################");
 		System.out.println("\nBienvenue dans votre application Adopte un chat!\n");
@@ -33,6 +35,7 @@ public class ConsoleMenu {
 		System.out.println("0 - Quitter l'application");
 
 		IPersonneDao daoPersonne = new PersonneDaoSql();
+		IChatDao daoChat =new ChatDaoSql();
 
 		Scanner sc = new Scanner(System.in);
 		int choix = 0;
@@ -53,7 +56,6 @@ public class ConsoleMenu {
 
 		}
 
-		IDao<Personne> daoChat;
 		switch (choix) {
 
 		case 1:
@@ -68,10 +70,10 @@ public class ConsoleMenu {
 			break;
 
 		case 2:
-			
+
 			UserInput input1 = new UserInput();
 			input1.input(sc);
-		
+
 			afterAction(sc);
 			break;
 
@@ -79,10 +81,10 @@ public class ConsoleMenu {
 
 			System.out.println("Quel est l'ID de la personne à modifier?");
 
-			int id = sc.nextInt();
+			int id2 = sc.nextInt();
 
 			Personne personneAModifier = new Personne();
-			personneAModifier = daoPersonne.findById(id);
+			personneAModifier = daoPersonne.findById(id2);
 
 			System.out.println(personneAModifier);
 
@@ -106,7 +108,7 @@ public class ConsoleMenu {
 				nouveauNom = sc.nextLine();
 				nouveauNom = sc.nextLine();
 
-				Personne personneAEnvoyerNom = new Personne(id, nouveauNom, personneAModifier.getPrenom(),
+				Personne personneAEnvoyerNom = new Personne(id2, nouveauNom, personneAModifier.getPrenom(),
 						personneAModifier.getMail(), personneAModifier.getTelephone(), personneAModifier.getAdresse(),
 						personneAModifier.getPassword(), personneAModifier.getDateNaissance(),
 						personneAModifier.getType());
@@ -118,7 +120,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau prenom:");
 				String nouveauPrenom = sc.nextLine();
 				nouveauPrenom = sc.nextLine();
-				Personne personneAEnvoyerPrenom = new Personne(id, personneAModifier.getNom(), nouveauPrenom,
+				Personne personneAEnvoyerPrenom = new Personne(id2, personneAModifier.getNom(), nouveauPrenom,
 						personneAModifier.getMail(), personneAModifier.getTelephone(), personneAModifier.getAdresse(),
 						personneAModifier.getPassword(), personneAModifier.getDateNaissance(),
 						personneAModifier.getType());
@@ -130,7 +132,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau mail:");
 				String nouveauMail = sc.nextLine();
 				nouveauMail = sc.nextLine();
-				Personne personneAEnvoyerMail = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerMail = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), nouveauMail, personneAModifier.getTelephone(),
 						personneAModifier.getAdresse(), personneAModifier.getPassword(),
 						personneAModifier.getDateNaissance(), personneAModifier.getType());
@@ -142,7 +144,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau numéro de téléphone:");
 				String nouveauTelephone = sc.nextLine();
 				nouveauTelephone = sc.nextLine();
-				Personne personneAEnvoyerTelephone = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerTelephone = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), personneAModifier.getMail(), nouveauTelephone,
 						personneAModifier.getAdresse(), personneAModifier.getPassword(),
 						personneAModifier.getDateNaissance(), personneAModifier.getType());
@@ -154,7 +156,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer la nouvelle adresse:");
 				String nouvelleAdresse = sc.nextLine();
 				nouvelleAdresse = sc.nextLine();
-				Personne personneAEnvoyerAdresse = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerAdresse = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), personneAModifier.getMail(), personneAModifier.getTelephone(),
 						nouvelleAdresse, personneAModifier.getPassword(), personneAModifier.getDateNaissance(),
 						personneAModifier.getType());
@@ -166,7 +168,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau mot de passe:");
 				String nouveauMotDePasse = sc.nextLine();
 				nouveauMotDePasse = sc.nextLine();
-				Personne personneAEnvoyerMotDePasse = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerMotDePasse = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), personneAModifier.getMail(), personneAModifier.getTelephone(),
 						personneAModifier.getAdresse(), nouveauMotDePasse, personneAModifier.getDateNaissance(),
 						personneAModifier.getType());
@@ -178,7 +180,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer la nouvelle date de naissance (format yyyy-mm-dd:");
 				String nouvelleDateNaissance = sc.nextLine();
 				nouvelleDateNaissance = sc.nextLine();
-				Personne personneAEnvoyerDateNaissance = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerDateNaissance = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), personneAModifier.getMail(), personneAModifier.getTelephone(),
 						personneAModifier.getAdresse(), personneAModifier.getPassword(), nouvelleDateNaissance,
 						personneAModifier.getType());
@@ -190,7 +192,7 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau type (Adoptant ou Refuge):");
 				String nouveauType = sc.nextLine();
 				nouveauType = sc.nextLine();
-				Personne personneAEnvoyerType = new Personne(id, personneAModifier.getNom(),
+				Personne personneAEnvoyerType = new Personne(id2, personneAModifier.getNom(),
 						personneAModifier.getPrenom(), personneAModifier.getMail(), personneAModifier.getTelephone(),
 						personneAModifier.getAdresse(), personneAModifier.getPassword(),
 						personneAModifier.getDateNaissance(), nouveauType);
@@ -233,7 +235,7 @@ public class ConsoleMenu {
 
 		case 5:
 
-			List<Chat> chat = daoChat.findAll();
+			List<Chat> chats = daoChat.findAll();
 
 			for (Chat chat1 : chats) {
 				System.out.println(chat1);
@@ -243,21 +245,21 @@ public class ConsoleMenu {
 			break; //fin choix 5
 
 		case 6:
-			
+
 			ChatInput input2 = new ChatInput();
 			input2.input(sc);
-		
+
 			afterAction(sc);
 			break;	//fin choix 6
-			
+
 		case 7:
 
 			System.out.println("Quel est l'ID du chat à modifier?");
 
-			int id2 = sc.nextInt();
+			int id21 = sc.nextInt();
 
 			Chat chatAModifier = new Chat();
-			chatAModifier = daoChat.findById(id2);
+			chatAModifier = daoChat.findById(id21);
 
 			System.out.println(chatAModifier);
 
@@ -286,9 +288,8 @@ public class ConsoleMenu {
 				System.out.println("Veuillez entrer le nouveau nom:");
 				String nouveauNom = "";
 				nouveauNom = sc.nextLine();
-				nouveauNom = sc.nextLine();
-
-				Chat chatAEnvoyerNom = new Chat(id, nouveauNom, chatAModifier.getSexe(),
+				
+				Chat chatAEnvoyerNom = new Chat(id21, nouveauNom, chatAModifier.getSexe(),
 						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
 						chatAModifier.getRace(),chatAModifier.getColor(),
 						chatAModifier.getTaille(), chatAModifier.getRegion(),
@@ -296,235 +297,262 @@ public class ConsoleMenu {
 						chatAModifier.getDescription(),
 						chatAModifier.isEnfant(), chatAModifier.isChien(),
 						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				daoChat.save(chatAEnvoyerNom);
 				break;
 
-				case 2:
-					System.out.println("Veuillez entrer le nouveau sexe:");
-					String nouveauSexe = "";
-					nouveauSexe = sc.nextLine();
-					nouveauSexe = sc.nextLine();
+			case 2:
+				System.out.println("Veuillez entrer le nouveau sexe:");
+				String nouveauSexe = "";
+				nouveauSexe = sc.nextLine();
+				
 
-					Chat chatAEnvoyerSexe = new Chat(id,chatAModifier.getNom(),nouveauSexe,
-							chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-							chatAModifier.getRace(),chatAModifier.getColor(),
-							chatAModifier.getTaille(), chatAModifier.getRegion(),
-							chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-							chatAModifier.getDescription(),
-							chatAModifier.isEnfant(), chatAModifier.isChien(),
-							chatAModifier.isChat(),chatAModifier.isSpecifique());
-					break;
-					
-					case 3:
-						System.out.println("Veuillez entrer le nouvel age:");
-						int nouveauAge;
-						nouveauAge = sc.nextInt();
-						nouveauAge = sc.nextInt();
+				Chat chatAEnvoyerSexe = new Chat(id21,chatAModifier.getNom(),nouveauSexe,
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerSexe);
+				break;
 
-						Chat chatAEnvoyeAge = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								nouveauAge, chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 4:
-						System.out.println("Veuillez entrer la nouvelle tranche d'age:");
-						String nouveauTrancheAge;
-						nouveauTrancheAge = sc.nextLine();
-						nouveauTrancheAge = sc.nextLine();
+			case 3:
+				System.out.println("Veuillez entrer le nouvel age:");
+				int nouveauAge;
+				nouveauAge = sc.nextInt();
+				
 
-						Chat chatAEnvoyeTrancheAge = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), nouveauTrancheAge(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 5:
-						System.out.println("Veuillez entrer la nouvelle race");
-						int nouveauRace;
-						nouveauRace = sc.nextInt();
-						nouveauRace = sc.nextInt();
+				Chat chatAEnvoyeAge = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						nouveauAge, chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeAge);
+				break;
 
-						Chat chatAEnvoyeRace = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								nouveauRace ,chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 6:
-						System.out.println("Veuillez entrer la nouvelle couleur: ");
-						int nouveauColor;
-						nouveauColor = sc.nextInt();
-						nouveauColor = sc.nextInt();
+			case 4:
+				System.out.println("Veuillez entrer la nouvelle tranche d'age:");
+				String nouveauTrancheage;
+				nouveauTrancheage = sc.nextLine();
+			
 
-						Chat chatAEnvoyeColor = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),nouveauColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 7:
-						System.out.println("Veuillez entrer la nouvelle taille:");
-						String nouveauTaille;
-						nouveauTaille = sc.nextLine();
-						nouveauTaille = sc.nextLine();
+				Chat chatAEnvoyeTrancheage = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), nouveauTrancheage, 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeTrancheage);
+				break;
 
-						Chat chatAEnvoyeTaille = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								nouveauTaille, chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 8:
-						System.out.println("Veuillez entrer la nouvelle region: ");
-						int nouveauRegion;
-						nouveauRegion = sc.nextInt();
-						nouveauRegion = sc.nextInt();
+			case 5:
+				System.out.println("Veuillez entrer la nouvelle race");
+				int nouveauRace;
+				nouveauRace = sc.nextInt();
+				
 
-						Chat chatAEnvoyerRegion = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), nouveauRegion,
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 9:
-						System.out.println("Veuillez entrer le nouveau departement: ");
-						int nouveauDpt;
-						nouveauDpt = sc.nextInt();
-						nouveauDpt = sc.nextInt();
+				Chat chatAEnvoyeRace = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						nouveauRace ,chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeRace);
+				break;
 
-						Chat chatAEnvoyerDpt = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								nouveauDpt, chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;	
-					
-					case 10:
-						System.out.println("Veuillez entrer la nouvelle adresse url de la photo");
-						String nouveauPhoto;
-						nouveauPhoto = sc.nextLine();
-						nouveauPhoto = sc.nextLine();
+			case 6:
+				System.out.println("Veuillez entrer la nouvelle couleur: ");
+				int nouveauColor;
+				nouveauColor = sc.nextInt();
+				
 
-						Chat chatAEnvoyePhoto= new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), nouveauPhoto, 
-								chatAModifier.getDescription(),
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 11:
-						System.out.println("Veuillez entrer la nouvelle description:");
-						String nouveauDescription;
-						nouveauDescription = sc.nextLine();
-						nouveauDescription = sc.nextLine();
+				Chat chatAEnvoyeColor = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),nouveauColor,
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeColor);
+				break;
 
-						Chat chatAEnvoyeDescription = new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								nouveauDescription,
-								chatAModifier.isEnfant(), chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 12:
-					 System.out.println("Veuillez entrer la nouvelle entente avec les enfants");
-						Boolean nouveauEnfant;
-						nouveauEnfant = sc.nextBoolean();
-						nouveauEnfant = sc.nextBoolean();
+			case 7:
+				System.out.println("Veuillez entrer la nouvelle taille:");
+				String nouveauTaille;
+				nouveauTaille = sc.nextLine();
+				
+				Chat chatAEnvoyeTaille = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						nouveauTaille, chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeTaille);
+				break;
 
-						Chat chatAEnvoyerEnfant= new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-								chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-								chatAModifier.getRace(),chatAModifier.getColor(),
-								chatAModifier.getTaille(), chatAModifier.getRegion(),
-								chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-								chatAModifier.getDescription(),
-								nouveauEnfant, chatAModifier.isChien(),
-								chatAModifier.isChat(),chatAModifier.isSpecifique());
-						break;
-						
-					case 13:
-						 System.out.println("Veuillez entrer la nouvelle entente avec les chiens");
-							Boolean nouveauChien;
-							nouveauChien = sc.nextBoolean();
-							nouveauChien = sc.nextBoolean();
+			case 8:
+				System.out.println("Veuillez entrer la nouvelle region: ");
+				int nouveauRegion;
+				nouveauRegion = sc.nextInt();
+				
+				Chat chatAEnvoyerRegion = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), nouveauRegion,
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerRegion);
+				break;
 
-							Chat chatAEnvoyerChien= new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-									chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-									chatAModifier.getRace(),chatAModifier.getColor(),
-									chatAModifier.getTaille(), chatAModifier.getRegion(),
-									chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-									chatAModifier.getDescription(),
-									chatAModifier.isEnfant(), nouveauChien,
-									chatAModifier.isChat(),chatAModifier.isSpecifique());
-							break;
-						 
-					case 14:
-						 System.out.println("Veuillez entrer la nouvelle entente avec les autres chats");
-							Boolean nouveauChat;
-							nouveauChat = sc.nextBoolean();
-							nouveauChat = sc.nextBoolean();
+			case 9:
+				System.out.println("Veuillez entrer le nouveau departement: ");
+				int nouveauDpt;
+				nouveauDpt = sc.nextInt();
+				
 
-							Chat chatAEnvoyerChat= new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-									chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-									chatAModifier.getRace(),chatAModifier.getColor(),
-									chatAModifier.getTaille(), chatAModifier.getRegion(),
-									chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-									chatAModifier.getDescription(),
-									chatAModifier.isEnfant(), chatAModifier.isChien(), 
-									nouveauChat, chatAModifier.isSpecifique());
-							break;
-					case 15:
-						 System.out.println("Veuillez entrer les nouveaux besoins spécifiques du chat");
-							Boolean nouveauSpecifique;
-							nouveauSpecifique = sc.nextBoolean();
-							nouveauSpecifique = sc.nextBoolean();
+				Chat chatAEnvoyerDpt = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						nouveauDpt, chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerDpt);
+				break;	
 
-							Chat chatAEnvoyerSpecifique= new Chat (id, chatAModifier.getNom(), chatAModifier.getSexe(),
-									chatAModifier.getAge(), chatAModifier.getTrancheage(), 
-									chatAModifier.getRace(),chatAModifier.getColor(),
-									chatAModifier.getTaille(), chatAModifier.getRegion(),
-									chatAModifier.getDpt(), chatAModifier.getPhoto(), 
-									chatAModifier.getDescription(),
-									chatAModifier.isEnfant(), chatAModifier.isChien(), 
-									chatAModifier.isChat(), nouveauSpecifique);
-							break;
+			case 10:
+				System.out.println("Veuillez entrer la nouvelle adresse url de la photo");
+				String nouveauPhoto;
+				nouveauPhoto = sc.nextLine();
+				
+
+				Chat chatAEnvoyePhoto= new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), nouveauPhoto, 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyePhoto);
+				break;
+
+			case 11:
+				System.out.println("Veuillez entrer la nouvelle description:");
+				String nouveauDescription;
+				nouveauDescription = sc.nextLine();
+				
+
+				Chat chatAEnvoyeDescription = new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						nouveauDescription,
+						chatAModifier.isEnfant(), chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyeDescription);
+				break;
+
+			case 12:
+				System.out.println("Veuillez entrer la nouvelle entente avec les enfants");
+				Boolean nouveauEnfant;
+				nouveauEnfant = sc.nextBoolean();
+			
+
+				Chat chatAEnvoyerEnfant= new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						nouveauEnfant, chatAModifier.isChien(),
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerEnfant);
+				break;
+
+			case 13:
+				System.out.println("Veuillez entrer la nouvelle entente avec les chiens");
+				Boolean nouveauChien;
+				nouveauChien = sc.nextBoolean();
+				
+
+				Chat chatAEnvoyerChien= new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), nouveauChien,
+						chatAModifier.isChat(),chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerChien);
+				break;
+
+			case 14:
+				System.out.println("Veuillez entrer la nouvelle entente avec les autres chats");
+				Boolean nouveauChat;
+				nouveauChat = sc.nextBoolean();
+				
+
+				Chat chatAEnvoyerChat= new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(), 
+						nouveauChat, chatAModifier.isSpecifique());
+				
+				daoChat.save(chatAEnvoyerChat);
+				break;
+			case 15:
+				System.out.println("Veuillez entrer les nouveaux besoins spécifiques du chat");
+				Boolean nouveauSpecifique;
+				nouveauSpecifique = sc.nextBoolean();
+				
+
+				Chat chatAEnvoyerSpecifique= new Chat (id21, chatAModifier.getNom(), chatAModifier.getSexe(),
+						chatAModifier.getAge(), chatAModifier.getTrancheage(), 
+						chatAModifier.getRace(),chatAModifier.getColor(),
+						chatAModifier.getTaille(), chatAModifier.getRegion(),
+						chatAModifier.getDpt(), chatAModifier.getPhoto(), 
+						chatAModifier.getDescription(),
+						chatAModifier.isEnfant(), chatAModifier.isChien(), 
+						chatAModifier.isChat(), nouveauSpecifique);
+				
+				daoChat.save(chatAEnvoyerSpecifique);
+				break;
 			} // FIN sous choix
 
 			afterAction(sc);
 			break; // Fin choix 7
-			
+
 		case 8:
 
 			System.out.println("Quel est l'ID du chat qui a été adopté?");
@@ -532,8 +560,8 @@ public class ConsoleMenu {
 			int idDelete1 = sc.nextInt();
 
 			Chat chatASupprimer = new Chat();
-			chat = (List<Chat>) daoChat.findById(idDelete1);
-
+			chatASupprimer = daoChat.findById(idDelete1);
+			
 			System.out.println(chatASupprimer);
 			System.out.println("Confirmer la suppression (1 - Oui / 2 - Non):");
 
@@ -553,23 +581,13 @@ public class ConsoleMenu {
 			afterAction(sc);
 			break; // FIN Choix 8
 
-			
-			
-			
+
+
+
 		default:
 			break;
 		} // FIN Switch
 
-	}
-
-	private int nouveauColor() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	private String nouveauTrancheAge() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void fonctionVerificationInput() {
