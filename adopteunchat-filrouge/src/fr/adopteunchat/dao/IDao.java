@@ -2,6 +2,7 @@ package fr.adopteunchat.dao;
 
 import java.util.List;
 
+
 public interface IDao<T> {
 	public List<T> findAll();
 	public T findById(int id);
